@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<project name="servlet_test" basedir="." default="build-war">
+	<property name="src.dir" value="src"/>
+	<property name="web.dir" value="WebContent"/>
+	<property name="build.dir" value="build"/>
+	<property name="name" value="servlet_test"/>
+	<property name="javaee.dir" value="/opt/wildfly/modules"/>
+
+	<path id="master-classpath">
+		<fileset dir="${web.dir}/WEB-INF/lib">
+			<include name="**/*.jar"/>
+		</fileset>
+		<fileset dir="${javaee.dir}">
+			<include name="**/*.jar"/>
+		</fileset>
+		<pathelement path="${build.dir}"/>
+	</path>
+
+	<target name="build" description="Compile Java sources">
+		<mkdir dir="${build.dir}"/>
+		<javac destdir="${build.dir}" source="1.8" target="1.8" includeantruntime="false">
+			<src path="${src.dir}"/>
+			<classpath refid="master-classpath"/>
+		</javac>
+	</target>
+
+	<target name="build-war" depends="build" description="Create deployable war dile">
+		<war destfile="${name}.war">
+			<fileset dir="${web.dir}">
+				<include name="**/*.*"/>
+			</fileset>
+			<classes dir="${build.dir}"/>
+		</war>
+	</target>
+
+	<target name="clean" description="Clean build files">
+		<delete>
+			<fileset dir="${build.dir}">
+				<include name="**/*.class"/>
+			</fileset>
+		</delete>
+	</target>
+
+</project>
+
