@@ -1,0 +1,8 @@
+
+# Properties for Linux istallation of Wildfly
+
+src.dir = src
+web.dir = WebContent
+build.dir = build
+name = servlet_test
+javaee.dir = /opt/wildfly/modules

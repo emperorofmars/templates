@@ -1,3 +1,4 @@
 .directory
 servlet_test.war
 build
+build.properties

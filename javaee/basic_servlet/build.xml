@@ -1,10 +1,6 @@
 <?xml version="1.0"?>
 <project name="servlet_test" basedir="." default="build-war">
-	<property name="src.dir" value="src"/>
-	<property name="web.dir" value="WebContent"/>
-	<property name="build.dir" value="build"/>
-	<property name="name" value="servlet_test"/>
-	<property name="javaee.dir" value="/opt/wildfly/modules"/>
+	<property file="build.properties"/>
 
 	<path id="master-classpath">
 		<fileset dir="${web.dir}/WEB-INF/lib">
